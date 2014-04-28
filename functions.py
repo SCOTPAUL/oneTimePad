@@ -78,5 +78,11 @@ def readInPad(filename):
     padFile.close()
 
     return pad
+
+
+def writeOutPad(filename, pad):
+    padFile = open(filename, "w")
+    padFile.write(pad + "\n")
+    padFile.close()
     
 

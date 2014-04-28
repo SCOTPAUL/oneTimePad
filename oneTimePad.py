@@ -7,7 +7,7 @@ def menu():
     alpha = enumeratePad()
     message = ""
 
-    choice = raw_input("Type 1 to set a pad, 2 to randomly create one or 3 to import one: ")
+    choice = raw_input("Type 1 to set a pad, 2 to randomly create one, 3 to import one or q to quit: ")
     if choice == "1":
         pad = setPad()
         print "Your pad is\n", pad
@@ -27,15 +27,15 @@ def menu():
             print "Error: No  such file exists in current directory\n"
             menu()
     else:
-        print "Error: selection was not 1 or 2\n\n"
+        print "Error: selection was not 1, 2, 3 or q\n\n"
         menu()
 
 
     print "---------------------------\n"
-    choice = (raw_input("Enter 1 to encrypt or 2 to decrypt: "))
+    choice = (raw_input("Enter 1 to encrypt, 2 to decrypt or q to quit: "))
     while choice != "q":
         makeChoice(choice, pad, alpha)
-        choice = (raw_input("Enter 1 to encrypt or 2 to decrypt: "))
+        choice = (raw_input("Enter 1 to encrypt, 2 to decrypt or q to quit: "))
 
 
 def makeChoice(choice, pad, alpha):
@@ -55,8 +55,12 @@ def makeChoice(choice, pad, alpha):
         except IndexError:
             print "Error: Pad is smaller than message"
 
+    elif choice == "3":
+    	padFile = raw_input("Enter a filename to write to\nWARNING, DO NOT ENTER AN EXISTING NOT TXT FILE: ")
+    	writeOutPad(padFile, pad)
+
     else:
-        print "Error: selection was not 1 or 2\n\n"
+        print "Error: selection was not 1, 2 or 3\n\n"
 
     return choice
 
