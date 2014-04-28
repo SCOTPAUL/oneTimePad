@@ -32,10 +32,10 @@ def menu():
 
 
     print "---------------------------\n"
-    choice = (raw_input("Enter 1 to encrypt, 2 to decrypt or q to quit: "))
+    choice = (raw_input("Enter 1 to encrypt, 2 to decrypt, 3 to write pad to a file or q to quit: "))
     while choice != "q":
         makeChoice(choice, pad, alpha)
-        choice = (raw_input("Enter 1 to encrypt, 2 to decrypt or q to quit: "))
+        choice = (raw_input("Enter 1 to encrypt, 2 to decrypt, 3 to write pad to a file or q to quit: "))
 
 
 def makeChoice(choice, pad, alpha):
@@ -56,7 +56,7 @@ def makeChoice(choice, pad, alpha):
             print "Error: Pad is smaller than message"
 
     elif choice == "3":
-    	padFile = raw_input("Enter a filename to write to\nWARNING, DO NOT ENTER AN EXISTING NOT TXT FILE: ")
+    	padFile = raw_input("Enter a filename to write to\nWARNING, DO NOT ENTER AN EXISTING TXT FILE: ")
     	writeOutPad(padFile, pad)
 
     else:
