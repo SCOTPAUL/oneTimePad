@@ -7,13 +7,25 @@ def menu():
     alpha = enumeratePad()
     message = ""
 
-    choice = raw_input("Type 1 to set a pad or 2 to randomly create one: ")
+    choice = raw_input("Type 1 to set a pad, 2 to randomly create one or 3 to import one: ")
     if choice == "1":
         pad = setPad()
         print "Your pad is\n", pad
     elif choice == "2":
         pad = randomPad()
         print "Your pad is\n", pad
+    elif choice == "3":
+        padFile = raw_input("Enter the file name: ")
+
+        try:
+            pad = readInPad(padFile)
+            print "Your pad is\n", pad
+        except IndexError:
+            print "Error: File is empty\n"
+            menu()
+        except IOError:
+            print "Error: No  such file exists in current directory\n"
+            menu()
     else:
         print "Error: selection was not 1 or 2\n\n"
         menu()
@@ -41,7 +53,7 @@ def makeChoice(choice, pad, alpha):
             decryptedMessage = deconvertMessage(message, pad, alpha)
             print "Decrypted message is as follows\n", decryptedMessage
         except IndexError:
-        	print "Error: Pad is smaller than message"
+            print "Error: Pad is smaller than message"
 
     else:
         print "Error: selection was not 1 or 2\n\n"
