@@ -38,6 +38,7 @@ def convertMessage(message, pad, enumerated):
     alpha = "abcdefghijklmnopqrstuvwxyz"
     n = 0
     encrypted = ""
+
     while n < len(message):
         if message[n] in alpha:
             messageNum = enumerated[message[n]]
@@ -70,4 +71,18 @@ def deconvertMessage(converted, pad, enumerated):
 
     return decrypted
 
+
+def readInPad(filename):
+    padFile = open(filename, "r")
+    pad = padFile.readlines()[0][:-1]
+    padFile.close()
+
+    return pad
+
+
+def writeOutPad(filename, pad):
+    padFile = open(filename, "w")
+    padFile.write(pad + "\n")
+    padFile.close()
+    
 
